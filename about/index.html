@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About HordeLedger: data sources and method</title>
+<meta name="description" content="Where HordeLedger&#x27;s WoW Forever auction house data comes from, how market price and sales per day are calculated, and privacy.">
+<link rel="canonical" href="https://hordeledger.com/about/">
+<meta property="og:site_name" content="HordeLedger">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About HordeLedger: data sources and method">
+<meta property="og:description" content="Where HordeLedger&#x27;s WoW Forever auction house data comes from, how market price and sales per day are calculated, and privacy.">
+<meta property="og:url" content="https://hordeledger.com/about/">
+<meta property="og:image" content="https://hordeledger.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#b3261e">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="HordeLedger blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+
+</head>
+<body>
+<header class="sh"><div class="sh-in">
+<a class="sh-logo" href="/"><span class="coins" aria-hidden="true"><i style="background:var(--gold)"></i><i style="background:var(--silver)"></i><i style="background:var(--copper)"></i></span>HordeLedger</a>
+<nav class="sh-nav" aria-label="Site"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/items/">Prices by category</a><a href="/blog/">Blog</a><a href="/about/" aria-current="page">About</a></nav>
+</div></header>
+<main class="main"><div class="prose">
+<h1>About HordeLedger</h1>
+<p class="lede">HordeLedger tracks the WoW Forever Horde auction house so you can see what things are worth, how fast they sell and when to post.</p>
+<h2 id="data">Where the data comes from</h2>
+<p><b>Blizzard's Game Data API.</b> Every hour we take a snapshot of every auction on the auction house: item, quantity, buyout and time left. These WoW Forever endpoints are documented by the community and not yet official, so details may change.</p>
+<p><b>In-game scans.</b> Full auction house scans from launch night (first scan 2026-11-04 22:39) fill in the history before the API snapshots began.</p>
+<p>Scope: WoW Forever · US PvP · Horde. Other realms and the Alliance auction house will have different prices.</p>
+<h2 id="collection">Data collection status</h2><p>Last snapshot: <b>Nov 14, 2026 5:00 Central</b>. 23 snapshots in the last 24 hours. Blizzard refreshes the auction data about once an hour (now and then it skips an hour).</p><p>Gaps of more than two hours in the last 7 days, when no snapshot was taken (prices and sales in these windows are filled in from the snapshots either side):</p><ul><li>Nov 9 0:33 to Nov 9 7:58 Central (7.4 hours)</li><li>Nov 9 21:43 to Nov 10 1:31 Central (3.8 hours)</li><li>Nov 10 1:31 to Nov 10 8:09 Central (6.6 hours)</li><li>Nov 11 3:37 to Nov 11 7:41 Central (4.1 hours)</li></ul>
+<h2 id="method">How the numbers work</h2>
+<p><b>Market price</b> is the average unit price of the cheapest 25% of units listed. It ignores one-off cheap listings and silly high ones, so it's closer to what you'd actually pay for a normal amount.</p>
+<p><b>Cheapest listing</b> is the lowest single buyout price per unit.</p>
+<p><b>Sells per day</b> is an estimate. Between two scans, units that disappear from the cheap end of the market and weren't re-listed are counted as sold. Listings can also be cancelled, so treat it as a guide to how fast something moves, not an exact count. Items with too little history don't get an estimate.</p>
+<p><b>Best time to sell</b> comes from which hours of the day auctions disappear early (bought) most, in US Central time. When an item has too few sales of its own, we use its whole category.</p>
+<p><b>Posting tips</b> look at the price ladder: if a few cheap listings sit in front of a wall of normal-priced ones, it's usually better to post just under the wall than to chase the cheap ones down. If the cheapest listing is under the vendor price, sell to a vendor.</p>
+<h2 id="privacy">Privacy</h2>
+<p>This site only uses market data: items, prices and quantities. It contains no player names, character or account information, and auction house data doesn't say who posted what.</p>
+<h2 id="ai">Using this data</h2>
+<p>You're welcome to cite or link to any page. The full current table is at <a href="/data/market.csv">/data/market.csv</a>, and there's a plain-text summary for AI tools at <a href="/llms.txt">/llms.txt</a>.</p>
+<h2>Not affiliated with Blizzard</h2>
+<p>HordeLedger is a fan project and is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc.</p>
+</div></main>
+<footer class="sf"><div class="sf-in">
+<div class="sf-links"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/items/">Prices by category</a><a href="/blog/">Blog</a><a href="/about/" aria-current="page">About</a><a href="/data/market.csv">Download the data (CSV)</a></div>
+<div>Auction house prices for WoW Forever · US PvP · Horde. Market data only: no player, character or account information.</div>
+<div>HordeLedger is a fan project and is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Item icons © Blizzard Entertainment, from Blizzard's Game Data API.</div>
+</div></footer>
+
+</body>
+</html>

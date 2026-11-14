@@ -1,0 +1,10 @@
+/data/*
+  Cache-Control: public, max-age=600
+  Access-Control-Allow-Origin: *
+/assets/*
+  Cache-Control: public, max-age=3600
+/icons/*
+  Cache-Control: public, max-age=2592000
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

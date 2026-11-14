@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The first 72 hours of the Horde auction house | HordeLedger</title>
+<meta name="description" content="We watched one WoW Forever auction house from launch night on. Prices halved, ammo ran a third of all volume, and most listings that vanish come straight back cheaper. Ten things that stood out.">
+<link rel="canonical" href="https://hordeledger.com/blog/launch-week/">
+<meta property="og:site_name" content="HordeLedger">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The first 72 hours of the Horde auction house | HordeLedger">
+<meta property="og:description" content="We watched one WoW Forever auction house from launch night on. Prices halved, ammo ran a third of all volume, and most listings that vanish come straight back cheaper. Ten things that stood out.">
+<meta property="og:url" content="https://hordeledger.com/blog/launch-week/">
+<meta property="og:image" content="https://hordeledger.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#b3261e">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="HordeLedger blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* Layout: one reading column (~64ch) with figures breaking slightly wider; ten numbered findings, each = claim, prose, chart, source line. */
+:root {
+  --page: #f3f5f7;        /* cool paper */
+  --surface: #fcfcfb;     /* chart surface (validated) */
+  --ink: #12151a;
+  --ink-2: #4a4f57;
+  --muted: #80848b;
+  --rule: #dde0e4;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --gold: #b8891a; --silver: #8d96a0; --copper: #b4683a;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6;
+  --up: #2a78d6; --down: #e34948;
+  --o1: #86b6ef; --o2: #5598e7; --o3: #2a78d6; --o4: #184f95;
+  --tip-bg: #12151a; --tip-fg: #f3f5f7;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Newsreader", Georgia, "Times New Roman", serif;
+  --ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --page: #0f1114; --surface: #1a1a19; --ink: #eeeeea; --ink-2: #b9bcc2; --muted: #898781; --rule: #2a2d32; --grid: #2c2c2a; --axis: #383835;
+  --gold: #e0b44a; --silver: #b5bdc6; --copper: #d98a5a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
+  --up: #3987e5; --down: #e66767; --o1: #184f95; --o2: #256abf; --o3: #3987e5; --o4: #86b6ef;
+  --tip-bg: #eeeeea; --tip-fg: #12151a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --page: #0f1114; --surface: #1a1a19; --ink: #eeeeea; --ink-2: #b9bcc2; --muted: #898781; --rule: #2a2d32; --grid: #2c2c2a; --axis: #383835;
+  --gold: #e0b44a; --silver: #b5bdc6; --copper: #d98a5a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9;
+  --up: #3987e5; --down: #e66767; --o1: #184f95; --o2: #256abf; --o3: #3987e5; --o4: #86b6ef;
+  --tip-bg: #eeeeea; --tip-fg: #12151a; color-scheme: dark }
+.post { background: var(--page); color: var(--ink); font-family: var(--body); font-size: 19px; line-height: 1.6; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 80px; }
+.col { max-width: 64ch; }
+header .kicker { font-family: var(--ui); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.coins { display: inline-flex; gap: 4px; } .coins i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(38px, 7vw, 68px); line-height: 1.02; letter-spacing: -.02em; margin: 18px 0 20px; text-wrap: balance; }
+.dek { font-size: 23px; line-height: 1.45; color: var(--ink-2); margin: 0 0 28px; }
+.byline { font-family: var(--ui); font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; }
+.tally { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 40px 0 8px; font-family: var(--ui); }
+.tally div { border-top: 2px solid var(--ink); padding-top: 10px; min-width: 0; }
+.tally b { display: block; font-family: var(--display); font-size: 34px; font-weight: 800; line-height: 1.1; }
+.tally span { font-size: 13.5px; color: var(--ink-2); line-height: 1.35; display: block; margin-top: 4px; }
+@media (max-width: 640px) { .tally { grid-template-columns: repeat(2, minmax(0, 1fr)); } .post { font-size: 18px; } .dek { font-size: 20px; } }
+section.find { margin-top: 72px; }
+.num { font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--muted); letter-spacing: .04em; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(26px, 4vw, 34px); line-height: 1.15; letter-spacing: -.01em; margin: 4px 0 14px; text-wrap: balance; }
+p { margin: 0 0 16px; }
+.coin { font-family: var(--ui); font-size: .86em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.coin .u { font-weight: 600; }
+.coin .ug { color: var(--gold); } .coin .us { color: var(--silver); } .coin .uc { color: var(--copper); }
+figure { margin: 26px 0 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 18px 12px; position: relative; min-width: 0; }
+figure .ft { font-family: var(--ui); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 2px; }
+figure .fs { font-family: var(--ui); font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--ui); font-size: 12.5px; color: var(--ink-2); margin: 0 0 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; } .legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; } .legend i.sq { width: 10px; height: 10px; border-radius: 2px; }
+.chart { width: 100%; min-width: 0; } .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--ui); }
+figcaption { font-family: var(--ui); font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+details { font-family: var(--ui); font-size: 12.5px; margin-top: 8px; color: var(--ink-2); }
+details summary { cursor: pointer; color: var(--ink-2); } details summary:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+.tbl { overflow-x: auto; margin-top: 8px; } table { border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 100%; }
+th, td { text-align: left; padding: 4px 10px 4px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; } th { color: var(--muted); font-weight: 600; }
+.tip { position: absolute; pointer-events: none; background: var(--tip-bg); color: var(--tip-fg); font-family: var(--ui); font-size: 12.5px; line-height: 1.4; padding: 7px 9px; border-radius: 6px; max-width: 240px; z-index: 5; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+.big { font-family: var(--display); font-weight: 800; font-size: 64px; line-height: 1; }
+.pull { display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap; margin: 8px 0 14px; font-family: var(--ui); color: var(--ink-2); font-size: 14px; }
+.pull .big { color: var(--ink); }
+.method { margin-top: 80px; border-top: 1px solid var(--rule); padding-top: 24px; font-size: 16px; color: var(--ink-2); }
+.method h3 { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink); margin: 0 0 10px; }
+.method li { margin-bottom: 8px; }
+@media (prefers-reduced-motion: no-preference) { .chart svg .grow { transition: opacity .2s; } }
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The first 72 hours of the Horde auction house","description":"We watched one WoW Forever auction house from launch night on. Prices halved, ammo ran a third of all volume, and most listings that vanish come straight back cheaper. Ten things that stood out.","datePublished":"2026-11-08","dateModified":"2026-11-08","url":"https://hordeledger.com/blog/launch-week/","image":"https://hordeledger.com/assets/og.png","author":{"@type":"Organization","name":"HordeLedger","url":"https://hordeledger.com"},"publisher":{"@type":"Organization","name":"HordeLedger","url":"https://hordeledger.com"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hordeledger.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://hordeledger.com/blog/"},{"@type":"ListItem","position":3,"name":"The first 72 hours of the Horde auction house","item":"https://hordeledger.com/blog/launch-week/"}]}</script>
+</head>
+<body>
+<header class="sh"><div class="sh-in">
+<a class="sh-logo" href="/"><span class="coins" aria-hidden="true"><i style="background:var(--gold)"></i><i style="background:var(--silver)"></i><i style="background:var(--copper)"></i></span>HordeLedger</a>
+<nav class="sh-nav" aria-label="Site"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/items/">Prices by category</a><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav>
+</div></header>
+<div class="post">
+
+<div class="wrap">
+<header class="col">
+  <div class="kicker"><span class="coins"><i style="background:var(--gold)"></i><i style="background:var(--silver)"></i><i style="background:var(--copper)"></i></span> HordeLedger · market notes · WoW Forever, US PvP, Horde AH</div>
+  <h1>The first 72 hours of the Horde auction house</h1>
+  <p class="dek">We watched one auction house from launch night on, with in-game scans and hourly snapshots from Blizzard's API. Prices halved, the ammo trade ran a third of all volume, and most listings that vanish come straight back cheaper. Here are the ten things that stood out.</p>
+  <div class="byline">Data from Nov 4, 22:39 (first scan) to Nov 8, 00:43 · 45 full scans and API snapshots · 121,043 price points across 4,036 items · times are US Central</div>
+</header>
+
+<div class="tally" id="tally"></div>
+
+<section class="find"><div class="col">
+  <div class="num">01</div>
+  <h2>The auction house filled up six times over</h2>
+  <p>On launch night the first full scan found 593 different items listed. By Sunday morning it was 3,645. Most of that growth came in the first two days, while characters leveled into new zones and new professions. After that it kept creeping up by about 30 new item types an hour.</p>
+  <p>The total listing count tells the same story. Blizzard's API counted <b>156,534</b> auctions on Friday night and <b>207,663</b> 25 hours later, a third more in one day.</p>
+</div>
+<figure><p class="ft">Distinct items listed, per full scan</p><p class="fs">Each point is one full auction house scan or one hourly API snapshot</p>
+<div class="chart" id="c1"></div><figcaption>Source: in-game scans (Blackthornes addon) until Nov 6, then Blizzard WoW Forever Game Data API snapshots, hourly.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t1"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">02</div>
+  <h2>Prices fell by half in three days</h2>
+  <p>We took every item that was listed in the first 12 hours and tracked its price against that launch-night level. For the typical item, the price fell to <b>47%</b> of where it started. The fall was steepest on day one and has nearly flattened since Saturday morning.</p>
+  <p>It hit materials unevenly. Leather fell to <b>19%</b> of its launch price and enchanting materials to <b>24%</b>, while cooking ingredients held best at <b>66%</b>. Metal and stone held flat for a day and a half before falling, possibly because mining nodes were heavily contested early.</p>
+</div>
+<figure><p class="ft">Price index by material type (launch night = 100)</p><p class="fs">Median of each item's price relative to its first-12-hour price, in 12-hour steps</p>
+<div class="legend" id="l2"></div><div class="chart" id="c2"></div><figcaption>Items listed in the first 12 hours only (1,401 items; 14 to 34 per material type). Median keeps a few odd listings from swinging the line.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t2"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">03</div>
+  <h2>Supply didn't grow evenly, and herbs grew least</h2>
+  <p>Comparing units listed in the first 12 hours with the last 12, quest items grew ninefold from a small base, ammo and crafting parts almost fivefold, and cloth nearly fourfold. Cloth drops from humanoids every player kills while leveling, so it piles up whether anyone farms it or not.</p>
+  <p>Herbs grew least, only 1.4×. Herbalism needs a gatherer to go out and pick, and early on most players were still questing. That slower supply is part of why herbs held their value better than cloth or leather.</p>
+</div>
+<figure><p class="ft">Units listed now vs. launch night</p><p class="fs">Multiple of first-12-hour supply, by category (categories with 1,000+ units at launch)</p>
+<div class="chart" id="c3"></div><figcaption>Median units listed per item, summed by category, first 12 hours vs. last 12 hours.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t3"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">04</div>
+  <h2>One unit in three sold is ammo</h2>
+  <div class="pull"><span class="big" id="ammoPct">36%</span><span>of all units bought per day are arrows and shots</span></div>
+  <p>Hunters burn ammo every fight, so they rebuy constantly. Sharp Arrows alone moved about 33,600 units a day, five times more than Linen Cloth, the busiest crafting material. Nine of the ten fastest sellers are ammunition.</p>
+  <p>The catch is value. Most ammo sells for 1 to 10 copper per unit, so it dominates unit counts without dominating gold. For a seller it's steady, low-margin volume.</p>
+</div>
+<figure><p class="ft">Units bought per day, top 12 items</p><p class="fs">Each mark is 2,000 units a day</p>
+<div class="legend" id="l4"></div><div class="chart" id="c4"></div><figcaption>Estimated from listings disappearing between full scans while the cheapest price held or rose (high- and medium-confidence items only). These are estimates, not Blizzard sales records.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t4"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">05</div>
+  <h2>Copper Ore went the other way</h2>
+  <p>While the rest of metal and stone deflated, Copper Ore climbed from <span class="coin" data-c="18"></span> on launch night to <span class="coin" data-c="135"></span>, seven and a half times its starting price. Supply moved the opposite way, from about 7,560 units listed to about 2,500.</p>
+  <p>Mining, Blacksmithing and Engineering all start on copper, so every new crafter needs it. Miners leveling past the starting zones stop gathering it. The Darkmoon Faire also opens on Nov 9 and buys crafted goods for tickets. We can't yet separate how much of the rise each cause explains. The Faire week will tell.</p>
+</div>
+<figure><p class="ft">Copper Ore: price and supply</p><p class="fs">Two panels, same timeline. Top: market price per ore. Bottom: units listed.</p>
+<div class="chart" id="c5"></div><figcaption>Market price = average of the cheapest quarter of units listed (API) or the scan addon's estimate (scans).</figcaption><details><summary>Show the data</summary><div class="tbl" id="t5"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">06</div>
+  <h2>Cooks pay up for raw ingredients, and finished goods collapse</h2>
+  <p>The biggest movers follow a clear pattern. Raw ingredients that cooks need to level, like Stringy Wolf Meat (up 15×), Small Eggs and Meaty Bat Wings, rose sharply. Copper bolts, bars and ore, the inputs for crafting, rose too.</p>
+  <p>The fallers are mostly things made while leveling a profession. Minor Mana Potions went from <span class="coin" data-c="1217"></span> to <span class="coin" data-c="40"></span>, and Minor Rejuvenation Potions from <span class="coin" data-c="1000"></span> to <span class="coin" data-c="18"></span>. Crafters have to make them to gain skill, then dump them for whatever they fetch. Across all 204 heavily traded goods and consumables, 73% are cheaper now than on launch night.</p>
+</div>
+<figure><p class="ft">Price now vs. launch night, biggest movers</p><p class="fs">Log scale: each step is ten times. Left of the line got cheaper, right got pricier.</p>
+<div class="legend" id="l6"></div><div class="chart" id="c6"></div><figcaption>Trade goods and consumables with at least 40 units listed both on launch night and now; median price in the first 12 hours vs. the last 12.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t6"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">07</div>
+  <h2>Behind a few cheap listings sits a wall</h2>
+  <p>The API lists every auction, so we can see the whole ladder of prices instead of just the cheapest. Linen Cloth shows the typical shape. A handful of sellers dumped 120 units at <span class="coin" data-c="16"></span> to <span class="coin" data-c="17"></span>, then there's a gap. Then <b>8,780</b> units sit at exactly <span class="coin" data-c="25"></span>, more than a third of all the linen on the market.</p>
+  <p>A shopper only ever sees the cheap layer, so the "price" looks like <span class="coin" data-c="16"></span>. Anyone selling more than a stack is really competing with the <span class="coin" data-c="25"></span> wall. At the rate linen sells (about 6,900 a day), the cheap layer is gone within the hour. Posting just under the wall, instead of undercutting the dump, gets over 50% more per cloth.</p>
+</div>
+<figure><p class="ft">Linen Cloth: units listed at each price</p><p class="fs">Snapshot of Nov 8, 00:43; prices in copper per cloth</p>
+<div class="chart" id="c7"></div><figcaption>Blizzard API snapshot, all Linen Cloth auctions grouped by unit price (up to 40c shown, covering nearly every unit).</figcaption><details><summary>Show the data</summary><div class="tbl" id="t7"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">08</div>
+  <h2>Most listings that vanish are relisted, not sold</h2>
+  <p>Between two hourly snapshots, about 32,450 auctions disappeared and 35,300 new ones appeared. We matched them up. Nearly 6 in 10 vanished listings came back within the hour as an auction for the same item, same stack size, at the same price or cheaper: sellers canceling and undercutting.</p>
+  <p>Only about 28 in 100 look like real purchases. That's why HordeLedger doesn't count a vanished listing as a sale. Counted naively, sales on this server would look two to ten times higher than they are. The market is efficient in another way too. Right now only 13 item types are listed below what a vendor pays for them, worth about 10 silver in total.</p>
+</div>
+<figure><p class="ft">What happened to 100 auctions that left the AH in one hour</p><p class="fs">Nov 7, 23:43 to Nov 8, 00:43 · each square is 1% of the 32,448 that vanished</p>
+<div class="legend" id="l8"></div><div class="chart" id="c8"></div><figcaption>Relisted = a new auction of the same item and quantity at the same or lower price appeared. Expired = its time-left band had run out. Pulled = a cheaper copy stayed up, so a buyer wouldn't have picked it. Bought = everything else (an upper bound).</figcaption><details><summary>Show the data</summary><div class="tbl" id="t8"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">09</div>
+  <h2>The market is quietest in the morning and peaks at 11pm</h2>
+  <p>Counting what left the AH each hour (purchases and cancellations together), activity stayed low from 5 to 11am and jumped from noon on. It peaked late in the evening, at about three times the morning low.</p>
+  <p>This is one Saturday, with one snapshot per hour and four hours missing while the PC collecting it slept, so read it as a first sketch. For sellers, the signal is already useful. Post before the evening rush, not at breakfast.</p>
+</div>
+<figure><p class="ft">AH activity by hour of day (average hour = 100)</p><p class="fs">Units that left the AH early, per hourly snapshot, Nov 7 to 8, US Central</p>
+<div class="chart" id="c9"></div><figcaption>Blizzard API. Includes cancellations, so absolute levels overstate sales; the shape across the day is the useful part. Hours 1, 2, 4 and 10 had no snapshot.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t9"></div></details></figure>
+</section>
+
+<section class="find"><div class="col">
+  <div class="num">10</div>
+  <h2>Most of the AH will be gone in 12 hours</h2>
+  <p>Every auction in the API carries a band for how long it has left. In this snapshot, 64% sat in the 2-to-12-hour band and another 20% had under 2 hours. Only 16% had more than 12 hours to go.</p>
+  <p>So roughly 84% of today's listings will have sold, expired or been relisted within half a day. A listing is rarely stale for long, and undercuts on a busy item arrive within hours, not days.</p>
+</div>
+<figure><p class="ft">Auctions by time left</p><p class="fs">All 207,663 auctions in the Nov 8, 00:43 snapshot</p>
+<div class="legend" id="l10"></div><div class="chart" id="c10"></div><figcaption>Blizzard's time-left bands: short = under 30 minutes, medium = 30 minutes to 2 hours, long = 2 to 12 hours, very long = 12 to 48 hours.</figcaption><details><summary>Show the data</summary><div class="tbl" id="t10"></div></details></figure>
+</section>
+
+<div class="method col">
+  <h3>How this was measured</h3>
+  <ul>
+    <li><b>Scans:</b> in-game full auction house scans with the Blackthornes addon, from launch night (Nov 4, 22:39) on.</li>
+    <li><b>API:</b> from Nov 6, 23:33, hourly snapshots of every auction from Blizzard's WoW Forever Game Data API. These endpoints are documented by the community and not yet official, so details may change.</li>
+    <li><b>Sales:</b> units sold per day are estimates from listings disappearing while the cheapest price held or rose. The API's own "vanished early" counts include cancellations and are treated only as an upper bound.</li>
+    <li><b>Scope:</b> one Horde auction house on one US PvP realm, in the first week after launch. Market data only: no character, account or player information is used.</li>
+  </ul>
+  <p>Built with HordeLedger, a personal toolkit for WoW Forever market data.</p>
+</div>
+</div>
+
+<script>
+const D = {"breadth":[[0.0,593,"2026-11-04 22:39"],[0.02,594,"2026-11-04 22:40"],[8.73,1294,"2026-11-05 07:23"],[10.17,1377,"2026-11-05 08:49"],[12.23,1420,"2026-11-05 10:53"],[14.5,1519,"2026-11-05 13:09"],[15.65,1556,"2026-11-05 14:18"],[21.0,1863,"2026-11-05 19:39"],[21.0,1814,"2026-11-05 19:39"],[21.02,1671,"2026-11-05 19:40"],[21.03,1807,"2026-11-05 19:41"],[22.93,1970,"2026-11-05 21:35"],[34.32,2437,"2026-11-06 08:58"],[37.87,2483,"2026-11-06 12:31"],[39.08,2504,"2026-11-06 13:44"],[39.53,2497,"2026-11-06 14:11"],[42.97,2715,"2026-11-06 17:37"],[43.65,2714,"2026-11-06 18:18"],[43.77,2698,"2026-11-06 18:25"],[46.17,2875,"2026-11-06 20:49"],[47.33,2878,"2026-11-06 21:59"],[48.9,2893,"2026-11-06 23:33"],[51.92,2996,"2026-11-07 02:34"],[53.87,3083,"2026-11-07 04:31"],[55.07,3084,"2026-11-07 05:43"],[56.07,3110,"2026-11-07 06:43"],[57.07,3118,"2026-11-07 07:43"],[58.07,3132,"2026-11-07 08:43"],[60.07,3169,"2026-11-07 10:43"],[61.07,3160,"2026-11-07 11:43"],[62.07,3179,"2026-11-07 12:43"],[63.07,3242,"2026-11-07 13:43"],[64.07,3270,"2026-11-07 14:43"],[65.07,3295,"2026-11-07 15:43"],[65.23,3435,"2026-11-07 15:53"],[66.07,3345,"2026-11-07 16:43"],[66.75,3465,"2026-11-07 17:24"],[67.07,3404,"2026-11-07 17:43"],[68.07,3435,"2026-11-07 18:43"],[69.07,3463,"2026-11-07 19:43"],[70.07,3483,"2026-11-07 20:43"],[71.07,3539,"2026-11-07 21:43"],[72.07,3570,"2026-11-07 22:43"],[73.07,3620,"2026-11-07 23:43"],[74.07,3645,"2026-11-08 00:43"]],"auctions":[{"t":"2026-11-06 23:33","auctions":156534,"items":2893},{"t":"2026-11-08 00:43","auctions":207663,"items":3645}],"catIndex":[{"name":"Herbs","n":17,"pts":[[6,100.0],[18,85.2],[30,62.7],[42,59.4],[54,43.4],[66,46.9],[78,54.3]]},{"name":"Cloth","n":15,"pts":[[6,100.0],[18,78.1],[30,48.4],[42,62.6],[54,46.7],[66,37.4],[78,39.6]]},{"name":"Leather","n":18,"pts":[[6,100.0],[18,54.1],[30,44.6],[42,35.4],[54,23.1],[66,21.5],[78,19.2]]},{"name":"Metal & stone","n":18,"pts":[[6,100.0],[18,100.0],[30,100.0],[42,87.8],[54,62.8],[66,57.6],[78,49.2]]},{"name":"Cooking","n":34,"pts":[[6,100.0],[18,85.2],[30,83.1],[42,74.6],[54,69.1],[66,67.1],[78,65.5]]},{"name":"Enchanting","n":14,"pts":[[6,100.0],[18,67.6],[30,32.2],[42,31.1],[54,30.8],[66,26.5],[78,23.6]]},{"name":"All items","n":1401,"pts":[[6,100.0],[18,81.4],[30,64.5],[42,52.8],[54,48.2],[66,47.0],[78,46.7]]}],"supply":[{"name":"Quest items","q0":1438.5,"q1":13156.0,"x":9.15},{"name":"Ammo","q0":109168.5,"q1":510078.0,"x":4.67},{"name":"Crafting parts","q0":1268.5,"q1":5919.0,"x":4.67},{"name":"Cloth","q0":9155.5,"q1":34734.0,"x":3.79},{"name":"Other trade goods","q0":6366.0,"q1":19537.0,"x":3.07},{"name":"Miscellaneous","q0":2612.5,"q1":7835.0,"x":3.0},{"name":"Armor","q0":14825.0,"q1":43733.5,"x":2.95},{"name":"Cooking ingredients","q0":17506.5,"q1":48319.0,"x":2.76},{"name":"Metal & stone","q0":16636.5,"q1":41790.0,"x":2.51},{"name":"Weapons","q0":7245.5,"q1":18054.5,"x":2.49},{"name":"Enchanting mats","q0":5999.5,"q1":14104.0,"x":2.35},{"name":"Consumables","q0":46377.5,"q1":95924.5,"x":2.07},{"name":"Bags","q0":3986.5,"q1":8122.0,"x":2.04},{"name":"Leather","q0":17865.0,"q1":35791.0,"x":2.0},{"name":"Recipes","q0":4233.5,"q1":7305.0,"x":1.73},{"name":"Herbs","q0":16220.0,"q1":22977.0,"x":1.42}],"sell":{"total":439369,"ammo":157958,"top":[{"name":"Sharp Arrow","perDay":33639},{"name":"Crafted Light Shot","perDay":31928},{"name":"Crafted Heavy Shot","perDay":16501},{"name":"Feathered Arrow","perDay":13050},{"name":"Heavy Shot","perDay":12698},{"name":"Exploding Shot","perDay":12216},{"name":"Razor Arrow","perDay":10550},{"name":"Rough Arrow","perDay":9368},{"name":"Crafted Solid Shot","perDay":8885},{"name":"Ruined Leather Scraps","perDay":7201},{"name":"Linen Cloth","perDay":6901},{"name":"Wool Cloth","perDay":6246}]},"copper":[[0.0,18,7560,"2026-11-04 22:39"],[0.02,16,7889,"2026-11-04 22:40"],[8.73,18,3037,"2026-11-05 07:23"],[10.17,21,1949,"2026-11-05 08:49"],[12.23,21,3926,"2026-11-05 10:53"],[14.5,23,2334,"2026-11-05 13:09"],[15.65,24,2612,"2026-11-05 14:18"],[21.0,24,4262,"2026-11-05 19:39"],[21.0,24,4262,"2026-11-05 19:39"],[21.02,24,4262,"2026-11-05 19:40"],[21.03,24,4262,"2026-11-05 19:41"],[22.93,28,3818,"2026-11-05 21:35"],[34.32,37,2940,"2026-11-06 08:58"],[37.87,45,3572,"2026-11-06 12:31"],[39.08,59,2275,"2026-11-06 13:44"],[39.53,66,3783,"2026-11-06 14:11"],[42.97,70,4038,"2026-11-06 17:37"],[43.65,72,3645,"2026-11-06 18:18"],[43.77,73,3566,"2026-11-06 18:25"],[46.17,68,4432,"2026-11-06 20:49"],[47.33,69,2676,"2026-11-06 21:59"],[48.9,95,3916,"2026-11-06 23:33"],[51.92,139,4223,"2026-11-07 02:34"],[53.87,124,5544,"2026-11-07 04:31"],[55.07,117,6703,"2026-11-07 05:43"],[56.07,116,5761,"2026-11-07 06:43"],[57.07,108,7406,"2026-11-07 07:43"],[58.07,111,7099,"2026-11-07 08:43"],[60.07,117,4767,"2026-11-07 10:43"],[61.07,111,5450,"2026-11-07 11:43"],[62.07,119,4426,"2026-11-07 12:43"],[63.07,118,4107,"2026-11-07 13:43"],[64.07,114,3751,"2026-11-07 14:43"],[65.07,120,3417,"2026-11-07 15:43"],[65.23,84,3922,"2026-11-07 15:53"],[66.07,127,2539,"2026-11-07 16:43"],[66.75,96,3440,"2026-11-07 17:24"],[67.07,126,2907,"2026-11-07 17:43"],[68.07,114,4649,"2026-11-07 18:43"],[69.07,110,5799,"2026-11-07 19:43"],[70.07,127,3385,"2026-11-07 20:43"],[71.07,119,4978,"2026-11-07 21:43"],[72.07,127,3381,"2026-11-07 22:43"],[73.07,118,3897,"2026-11-07 23:43"],[74.07,135,2519,"2026-11-08 00:43"]],"movers":[{"name":"Spider Ichor","m0":1700.0,"m1":16.0,"x":0.0094},{"name":"Minor Rejuvenation Potion","m0":1000.0,"m1":18.0,"x":0.018},{"name":"Minor Mana Potion","m0":1217.0,"m1":40.0,"x":0.0329},{"name":"Leg Meat","m0":3805.0,"m1":93.0,"x":0.0244},{"name":"Flask of Oil","m0":715.0,"m1":25.0,"x":0.035},{"name":"Fresh Gustberry Bread","m0":92.0,"m1":2.0,"x":0.0217},{"name":"Stringy Wolf Meat","m0":13.0,"m1":198.0,"x":15.2308},{"name":"Small Egg","m0":39.0,"m1":355.0,"x":9.1026},{"name":"Meaty Bat Wing","m0":14.5,"m1":104.0,"x":7.1724},{"name":"Handful of Copper Bolts","m0":29.5,"m1":198.0,"x":6.7119},{"name":"Copper Ore","m0":18.0,"m1":119.0,"x":6.6111},{"name":"Copper Bar","m0":20.5,"m1":128.0,"x":6.2439}],"moversN":204,"moversDown":73,"ladder":[[16,75],[17,45],[20,20],[25,8780],[26,1194],[27,2974],[28,879],[29,932],[30,2983],[31,249],[32,41],[33,91],[35,523],[36,37],[38,30],[40,482]],"ladderTotal":24417,"churn":{"relisted":18421,"bought":9086,"pulled":2834,"expired":2107,"new":35325,"prev":204786,"cur":207663},"hours":[[0,91889],[3,63958],[5,40191],[6,54145],[7,44584],[8,49833],[9,42259],[11,45749],[12,66916],[13,84683],[14,82679],[15,80982],[16,82552],[17,62443],[18,59185],[19,56959],[20,96562],[21,72049],[22,92676],[23,125456]],"timeleft":[["SHORT",10439],["MEDIUM",30725],["LONG",133026],["VERY_LONG",33473]],"bv":{"items":13,"units":305,"profit":1012,"top":[{"name":"Vibrant Plume","units":221,"profit":357,"lowest":820,"vendor":825},{"name":"Twin-bladed Axe","units":9,"profit":216,"lowest":1000,"vendor":1024},{"name":"Barbaric Battle Axe","units":2,"profit":144,"lowest":1300,"vendor":1372},{"name":"Raider Shortsword","units":3,"profit":75,"lowest":800,"vendor":825},{"name":"Small Green Pouch","units":1,"profit":50,"lowest":200,"vendor":250},{"name":"Heavy Wool Bandage","units":24,"profit":48,"lowest":55,"vendor":57},{"name":"Inscribed Leather Boots","units":5,"profit":40,"lowest":400,"vendor":408},{"name":"Dark Leather Belt","units":9,"profit":27,"lowest":700,"vendor":703},{"name":"Senggin Root","units":20,"profit":20,"lowest":5,"vendor":6},{"name":"Soldier's Shield","units":1,"profit":15,"lowest":600,"vendor":615}]}};
+const NS = "http://www.w3.org/2000/svg";
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmtN = n => Math.round(n).toLocaleString("en-US");
+function coin(c) { c = Math.round(c); const g = Math.floor(c / 10000), s = Math.floor(c / 100) % 100, cc = c % 100; const p = [];
+  if (g) p.push(g + "g"); if (g || s) p.push(s + "s"); if (cc || !p.length) p.push(cc + "c"); return p.join(" "); }
+function coinHTML(c) { return coin(c).split(" ").map(x => `${x.slice(0, -1)}<span class="u u${x.slice(-1)}">${x.slice(-1)}</span>`).join(" "); }
+document.querySelectorAll(".coin[data-c]").forEach(e => e.innerHTML = coinHTML(+e.dataset.c));
+const T0 = new Date(2026, 10, 4, 22, 39);
+const atH = h => new Date(T0.getTime() + h * 3600e3);
+const dayLbl = d => d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+const timeLbl = h => { const d = atH(h); return d.toLocaleDateString("en-US", { month: "short", day: "numeric" }) + ", " + d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }); };
+
+function el(tag, attrs = {}, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function txt(parent, x, y, s, o = {}) { const t = el("text", { x, y, fill: o.fill || "var(--muted)", "font-size": o.size || 11.5, "text-anchor": o.anchor || "start", "font-weight": o.weight || 400, "dominant-baseline": o.base || "auto" }, parent); t.textContent = s; return t; }
+function lin(d0, d1, r0, r1) { const f = v => r0 + (v - d0) / (d1 - d0) * (r1 - r0); f.inv = p => d0 + (p - r0) / (r1 - r0) * (d1 - d0); return f; }
+function svgFor(id, h) { const box = document.getElementById(id); box.innerHTML = ""; const w = Math.max(280, box.clientWidth); const s = el("svg", { viewBox: `0 0 ${w} ${h}`, role: "img" }, box); return [s, w]; }
+function roundTopRect(x, y, w, h, r) { r = Math.min(r, h, w / 2); if (h <= 0) return ""; return `M${x},${y + h}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h}Z`; }
+function roundRightRect(x, y, w, h, r) { r = Math.min(r, w, h / 2); if (w <= 0) return ""; return `M${x},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h - r}Q${x + w},${y + h} ${x + w - r},${y + h}H${x}Z`; }
+function roundLeftRect(x, y, w, h, r) { r = Math.min(r, w, h / 2); if (w <= 0) return ""; return `M${x + w},${y}H${x + r}Q${x},${y} ${x},${y + r}V${y + h - r}Q${x},${y + h} ${x + r},${y + h}H${x + w}Z`; }
+
+// tooltip: one per figure
+function tipFor(box) { const fig = box.closest("figure"); let t = fig.querySelector(".tip"); if (!t) { t = document.createElement("div"); t.className = "tip"; t.hidden = true; fig.appendChild(t); } return t; }
+function showTip(box, html, cx, cy) { const t = tipFor(box), fig = box.closest("figure"); t.innerHTML = html; t.hidden = false;
+  const fr = fig.getBoundingClientRect(); let x = cx - fr.left + 14, y = cy - fr.top + 14; const tw = t.offsetWidth, th = t.offsetHeight;
+  if (x + tw > fr.width - 6) x = cx - fr.left - tw - 14; if (x < 6) x = 6; if (y + th > fr.height - 6) y = cy - fr.top - th - 14; t.style.left = x + "px"; t.style.top = y + "px"; }
+function hideTip(box) { tipFor(box).hidden = true; }
+function hoverMarks(box) { box.onpointermove = e => { const m = e.target.closest("[data-tip]"); if (m) showTip(box, m.dataset.tip, e.clientX, e.clientY); else hideTip(box); }; box.onpointerleave = () => hideTip(box); }
+function table(id, head, rows) { document.getElementById(id).innerHTML = "<table><thead><tr>" + head.map(h => `<th>${h}</th>`).join("") + "</tr></thead><tbody>" +
+  rows.map(r => "<tr>" + r.map(c => `<td>${c}</td>`).join("") + "</tr>").join("") + "</tbody></table>"; }
+function legend(id, items) { document.getElementById(id).innerHTML = items.map(([c, n, sq]) => `<span><i class="${sq ? "sq" : ""}" style="background:${c}"></i>${n}</span>`).join(""); }
+function yGrid(s, y, ticks, x0, x1, fmt) { for (const t of ticks) { el("line", { x1: x0, x2: x1, y1: y(t), y2: y(t), stroke: "var(--grid)", "stroke-width": 1 }, s); txt(s, x0 - 8, y(t) + 4, fmt(t), { anchor: "end" }); } }
+function dayTicks(s, x, y0, hMin, hMax) { for (let d = new Date(2026, 10, 5); ; d = new Date(d.getTime() + 86400e3)) { const h = (d - T0) / 3600e3; if (h > hMax) break; if (h < hMin) continue;
+  el("line", { x1: x(h), x2: x(h), y1: y0, y2: y0 + 5, stroke: "var(--axis)" }, s); txt(s, x(h), y0 + 18, dayLbl(d), { anchor: "middle" }); } }
+function crosshair(box, s, x, top, bottom, xs, html, onMove) { const g = el("g", {}, s); const ln = el("line", { y1: top, y2: bottom, stroke: "var(--axis)", "stroke-width": 1 }, g); g.style.display = "none";
+  const ov = el("rect", { x: x(xs[0]) - 10, y: top, width: x(xs[xs.length - 1]) - x(xs[0]) + 20, height: bottom - top, fill: "transparent" }, s);
+  ov.addEventListener("pointermove", e => { const r = s.getBoundingClientRect(), sc = r.width / s.viewBox.baseVal.width; const px = (e.clientX - r.left) / sc; let bi = 0;
+    xs.forEach((v, i) => { if (Math.abs(x(v) - px) < Math.abs(x(xs[bi]) - px)) bi = i; }); g.style.display = ""; ln.setAttribute("x1", x(xs[bi])); ln.setAttribute("x2", x(xs[bi])); onMove && onMove(bi); showTip(box, html(bi), e.clientX, e.clientY); });
+  ov.addEventListener("pointerleave", () => { g.style.display = "none"; onMove && onMove(-1); hideTip(box); }); return g; }
+
+// tally
+document.getElementById("tally").innerHTML = [["6.1×", "more item types listed than on launch night"], ["47%", "typical price vs. launch night"], ["36%", "of units bought are ammo"], ["57%", "of vanished listings come back cheaper"]]
+  .map(([b, s]) => `<div><b>${b}</b><span>${s}</span></div>`).join("");
+
+const charts = {
+  c1() { const [s, w] = svgFor("c1", 280), m = { l: 50, r: 56, t: 14, b: 34 }; const pts = D.breadth;
+    const x = lin(0, pts[pts.length - 1][0], m.l, w - m.r), y = lin(0, 4000, 280 - m.b, m.t);
+    yGrid(s, y, [0, 1000, 2000, 3000, 4000], m.l, w - m.r, fmtN); dayTicks(s, x, 280 - m.b, 0, pts[pts.length - 1][0]);
+    el("line", { x1: m.l, x2: w - m.r, y1: y(0), y2: y(0), stroke: "var(--axis)" }, s);
+    const api = pts.findIndex(p => p[2] >= "2026-11-06 23:30");
+    el("line", { x1: x(pts[api][0]), x2: x(pts[api][0]), y1: m.t, y2: y(0), stroke: "var(--axis)", "stroke-width": 1 }, s);
+    txt(s, x(pts[api][0]) - 6, m.t + 10, "hourly API snapshots begin", { anchor: "end", size: 11 });
+    const d = pts.map((p, i) => (i ? "L" : "M") + x(p[0]).toFixed(1) + "," + y(p[1]).toFixed(1)).join("");
+    el("path", { d: d + `L${x(pts[pts.length - 1][0])},${y(0)}L${x(0)},${y(0)}Z`, fill: "var(--s1)", "fill-opacity": .1 }, s);
+    el("path", { d, fill: "none", stroke: "var(--s1)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, s);
+    const L = pts[pts.length - 1], F = pts[0];
+    el("circle", { cx: x(L[0]), cy: y(L[1]), r: 4.5, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2 }, s);
+    el("circle", { cx: x(F[0]), cy: y(F[1]), r: 4.5, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2 }, s);
+    txt(s, x(L[0]) + 8, y(L[1]) + 4, fmtN(L[1]), { fill: "var(--ink)", weight: 600 }); txt(s, x(F[0]) + 8, y(F[1]) + 16, fmtN(F[1]), { fill: "var(--ink)", weight: 600 });
+    const dot = el("circle", { r: 4.5, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2 }, s); dot.style.display = "none";
+    crosshair(document.getElementById("c1"), s, x, m.t, y(0), pts.map(p => p[0]), i => `<b>${fmtN(pts[i][1])}</b> items listed<br>${timeLbl(pts[i][0])}`,
+      i => { if (i < 0) dot.style.display = "none"; else { dot.style.display = ""; dot.setAttribute("cx", x(pts[i][0])); dot.setAttribute("cy", y(pts[i][1])); } });
+    table("t1", ["Time", "Items listed"], pts.map(p => [p[2], fmtN(p[1])]));
+  },
+  c2() { const [s, w] = svgFor("c2", 320), m = { l: 40, r: 104, t: 14, b: 34 }; const ser = D.catIndex; const all = ser.find(v => v.name === "All items"); const cats = ser.filter(v => v !== all);
+    const cols = ["var(--s1)", "var(--s2)", "var(--s3)", "var(--s4)", "var(--s5)", "var(--s6)"];
+    legend("l2", [...cats.map((c, i) => [cols[i], c.name]), ["var(--ink)", "All items"]]);
+    const xs = all.pts.map(p => p[0]); const x = lin(xs[0], xs[xs.length - 1], m.l, w - m.r), y = lin(0, 110, 320 - m.b, m.t);
+    yGrid(s, y, [0, 25, 50, 75, 100], m.l, w - m.r, v => v); el("line", { x1: m.l, x2: w - m.r, y1: y(0), y2: y(0), stroke: "var(--axis)" }, s);
+    xs.forEach(h => txt(s, x(h), 320 - m.b + 18, h === 6 ? "launch" : `+${h - 6}h`, { anchor: "middle" }));
+    const draw = (v, c, wd) => { el("path", { d: v.pts.map((p, i) => (i ? "L" : "M") + x(p[0]) + "," + y(p[1])).join(""), fill: "none", stroke: c, "stroke-width": wd, "stroke-linejoin": "round", "stroke-linecap": "round" }, s);
+      const L = v.pts[v.pts.length - 1]; el("circle", { cx: x(L[0]), cy: y(L[1]), r: 4, fill: c, stroke: "var(--surface)", "stroke-width": 2 }, s); };
+    cats.forEach((v, i) => draw(v, cols[i], 2)); draw(all, "var(--ink)", 2.5);
+    // direct labels only for the extremes and the overall line
+    const end = v => v.pts[v.pts.length - 1][1];
+    [[cats.reduce((a, b) => end(a) > end(b) ? a : b), 0], [cats.reduce((a, b) => end(a) < end(b) ? a : b), 0], [all, 0]].forEach(([v]) =>
+      txt(s, w - m.r + 8, y(end(v)) + 4, `${v.name} ${end(v)}`, { fill: v === all ? "var(--ink)" : "var(--ink-2)", weight: v === all ? 600 : 400 }));
+    crosshair(document.getElementById("c2"), s, x, m.t, y(0), xs, i => `<b>${xs[i] === 6 ? "Launch night" : "+" + (xs[i] - 6) + " hours"}</b><br>` +
+      [...ser].sort((a, b) => b.pts[i][1] - a.pts[i][1]).map(v => `${v.name}: ${v.pts[i][1]}`).join("<br>"));
+    table("t2", ["Hours after launch", ...ser.map(v => v.name)], xs.map((h, i) => [h === 6 ? "0-12" : `${h - 6}-${h + 6}`, ...ser.map(v => v.pts[i][1])]));
+  },
+  c3() { const rows = D.supply, bh = 18, gap = 12, m = { l: 150, r: 56, t: 8, b: 26 }; const H = m.t + m.b + rows.length * (bh + gap); const [s, w] = svgFor("c3", H);
+    const xMax = Math.ceil(Math.max(...rows.map(r => r.x))); const x = lin(0, xMax, m.l, w - m.r); for (let t = 0; t <= xMax; t += xMax > 6 ? 2 : 1) { el("line", { x1: x(t), x2: x(t), y1: m.t, y2: H - m.b, stroke: "var(--grid)" }, s); txt(s, x(t), H - m.b + 16, t + "×", { anchor: "middle" }); }
+    el("line", { x1: x(1), x2: x(1), y1: m.t - 4, y2: H - m.b, stroke: "var(--axis)", "stroke-width": 1.5 }, s);
+    rows.forEach((r, i) => { const yy = m.t + i * (bh + gap); txt(s, m.l - 10, yy + bh / 2 + 4, r.name, { anchor: "end", fill: "var(--ink-2)", size: 12.5 });
+      el("path", { d: roundRightRect(x(0), yy, x(r.x) - x(0), bh, 4), fill: "var(--s1)", "data-tip": `<b>${r.name}</b><br>${r.x}× · ${fmtN(r.q0)} → ${fmtN(r.q1)} units` }, s);
+      txt(s, x(r.x) + 6, yy + bh / 2 + 4, r.x.toFixed(1) + "×", { fill: "var(--ink)", weight: 600 }); });
+    txt(s, x(1) + 4, H - m.b + 16 + 0, "", {}); hoverMarks(document.getElementById("c3"));
+    table("t3", ["Category", "Units, first 12h", "Units, last 12h", "Multiple"], rows.map(r => [r.name, fmtN(r.q0), fmtN(r.q1), r.x + "×"]));
+  },
+  c4() { const rows = D.sell.top, per = 2000, isAmmo = n => /Arrow|Shot/.test(n); legend("l4", [["var(--s1)", "Ammo (arrows and shots)", 1], ["var(--s2)", "Everything else", 1]]);
+    const box = document.getElementById("c4"); const w0 = Math.max(280, box.clientWidth); const narrow = w0 < 560; const lw = narrow ? 0 : 168, rowH = narrow ? 40 : 24;
+    const H = rows.length * rowH + 6; const [s, w] = svgFor("c4", H); const avail = w - lw - 70; const maxIcons = Math.ceil(rows[0].perDay / per); const step = Math.min(15, avail / maxIcons); const sz = step - 3;
+    document.getElementById("ammoPct").textContent = Math.round(100 * D.sell.ammo / D.sell.total) + "%";
+    rows.forEach((r, i) => { const yy = i * rowH + (narrow ? 16 : 4); const ammo = isAmmo(r.name); const c = ammo ? "var(--s1)" : "var(--s2)";
+      if (narrow) txt(s, 0, yy - 4, r.name, { fill: "var(--ink-2)", size: 12 }); else txt(s, lw - 10, yy + sz / 2 + 4, r.name, { anchor: "end", fill: "var(--ink-2)", size: 12.5 });
+      const g = el("g", { "data-tip": `<b>${r.name}</b><br>~${fmtN(r.perDay)} units bought per day` }, s);
+      const n = r.perDay / per; for (let k = 0; k < Math.ceil(n); k++) { const frac = Math.min(1, n - k), x0 = lw + k * step;
+        const cid = `cp${i}_${k}`; if (frac < 1) { const cp = el("clipPath", { id: cid }, s); el("rect", { x: x0, y: yy - 1, width: sz * frac, height: sz + 2 }, cp); }
+        const a = frac < 1 ? { "clip-path": `url(#${cid})` } : {};
+        if (ammo) el("path", { d: `M${x0},${yy + sz * .3}H${x0 + sz * .55}V${yy}L${x0 + sz},${yy + sz / 2}L${x0 + sz * .55},${yy + sz}V${yy + sz * .7}H${x0}Z`, fill: c, ...a }, g);
+        else el("rect", { x: x0, y: yy, width: sz, height: sz, rx: 2.5, fill: c, ...a }, g); }
+      el("rect", { x: lw, y: yy - 2, width: Math.max(10, n * step), height: sz + 4, fill: "transparent" }, g);
+      txt(s, lw + Math.ceil(n) * step + 6, yy + sz / 2 + 4, fmtN(r.perDay), { fill: "var(--ink)", weight: 600, size: 12 }); });
+    hoverMarks(box); table("t4", ["Item", "Units bought per day (est.)"], rows.map(r => [r.name, fmtN(r.perDay)]));
+  },
+  c5() { const [s, w] = svgFor("c5", 330), m = { l: 56, r: 20, t: 12, b: 30 }; const P = D.copper; const hMax = P[P.length - 1][0];
+    const x = lin(0, hMax, m.l, w - m.r); const top = [m.t, 180], bot = [212, 330 - m.b];
+    const y1 = lin(0, 150, top[1], top[0]), y2 = lin(0, 8000, bot[1], bot[0]);
+    yGrid(s, y1, [0, 50, 100, 150], m.l, w - m.r, v => coin(v)); yGrid(s, y2, [0, 4000, 8000], m.l, w - m.r, v => v ? (v / 1000) + "K" : "0");
+    el("line", { x1: m.l, x2: w - m.r, y1: y1(0), y2: y1(0), stroke: "var(--axis)" }, s); el("line", { x1: m.l, x2: w - m.r, y1: y2(0), y2: y2(0), stroke: "var(--axis)" }, s);
+    txt(s, m.l, top[0] - 2 + 10, "", {}); txt(s, w - m.r, bot[0] - 8, "units listed", { anchor: "end", size: 11 }); txt(s, m.l + 6, top[0] + 10, "price per ore", { size: 11 });
+    dayTicks(s, x, y2(0), 0, hMax);
+    const d = P.map((p, i) => (i ? "L" : "M") + x(p[0]) + "," + y1(p[1])).join("");
+    el("path", { d, fill: "none", stroke: "var(--s2)", "stroke-width": 2, "stroke-linejoin": "round" }, s);
+    const bw = Math.max(2, Math.min(6, (w - m.l - m.r) / P.length - 2));
+    P.forEach(p => { if (p[2] != null) el("path", { d: roundTopRect(x(p[0]) - bw / 2, y2(p[2]), bw, y2(0) - y2(p[2]), 2), fill: "var(--s1)" }, s); });
+    const L = P[P.length - 1]; el("circle", { cx: x(L[0]), cy: y1(L[1]), r: 4.5, fill: "var(--s2)", stroke: "var(--surface)", "stroke-width": 2 }, s);
+    txt(s, x(L[0]) - 8, y1(L[1]) - 10, coin(L[1]), { anchor: "end", fill: "var(--ink)", weight: 600 }); txt(s, x(P[0][0]) + 8, y1(P[0][1]) - 8, coin(P[0][1]), { fill: "var(--ink)", weight: 600 });
+    crosshair(document.getElementById("c5"), s, x, m.t, y2(0), P.map(p => p[0]), i => `<b>${timeLbl(P[i][0])}</b><br>Price ${coin(P[i][1])}<br>${P[i][2] != null ? fmtN(P[i][2]) + " listed" : ""}`);
+    table("t5", ["Time", "Market price", "Units listed"], P.map(p => [p[3], coin(p[1]), p[2] != null ? fmtN(p[2]) : "–"]));
+  },
+  c6() { const rows = D.movers.slice().sort((a, b) => a.x - b.x); legend("l6", [["var(--down)", "Cheaper now", 1], ["var(--up)", "Pricier now", 1]]);
+    const box = document.getElementById("c6"); const narrow = box.clientWidth < 560; const bh = 16, gap = narrow ? 30 : 12, m = { l: narrow ? 8 : 190, r: narrow ? 8 : 130, t: 6, b: 28 };
+    const H = m.t + m.b + rows.length * (bh + gap) + (narrow ? 10 : 0); const [s, w] = svgFor("c6", H); const lg = v => Math.log10(v);
+    const x = lin(-2.2, 1.3, m.l, w - m.r); [0.01, 0.1, 1, 10].forEach(t => { el("line", { x1: x(lg(t)), x2: x(lg(t)), y1: m.t, y2: H - m.b, stroke: t === 1 ? "var(--axis)" : "var(--grid)", "stroke-width": t === 1 ? 1.5 : 1 }, s);
+      txt(s, x(lg(t)), H - m.b + 16, t === 1 ? "same" : "×" + t, { anchor: "middle" }); });
+    rows.forEach((r, i) => { const yy = m.t + i * (bh + gap) + (narrow ? 16 : 0); const v = lg(r.x), x0 = x(0), x1 = x(v); const up = r.x > 1;
+      const label = `${coin(r.m0)} → ${coin(r.m1)}`;
+      if (narrow) txt(s, 0, yy - 4, `${r.name}  ${label}`, { fill: "var(--ink-2)", size: 11.5 });
+      else { txt(s, m.l - 10, yy + bh / 2 + 4, r.name, { anchor: "end", fill: "var(--ink-2)", size: 12.5 }); }
+      el("path", { d: up ? roundRightRect(x0, yy, x1 - x0, bh, 4) : roundLeftRect(x1, yy, x0 - x1, bh, 4), fill: up ? "var(--up)" : "var(--down)",
+        "data-tip": `<b>${r.name}</b><br>${label}<br>${up ? "×" + r.x.toFixed(1) : Math.round((1 - r.x) * 100) + "% cheaper"}` }, s);
+      if (!narrow) txt(s, up ? x1 + 6 : x0 + 6, yy + bh / 2 + 4, (up ? "×" + r.x.toFixed(1) + " " : "") + label, { fill: "var(--ink)", size: 11.5 }); });
+    hoverMarks(box); table("t6", ["Item", "Launch night", "Now", "Change"], rows.map(r => [r.name, coin(r.m0), coin(r.m1), r.x > 1 ? "×" + r.x.toFixed(1) : "−" + Math.round((1 - r.x) * 100) + "%"]));
+  },
+  c7() { const [s, w] = svgFor("c7", 290), m = { l: 52, r: 16, t: 16, b: 34 }; const L = D.ladder; const x = lin(14.5, 40.5, m.l, w - m.r), y = lin(0, 10000, 290 - m.b, m.t);
+    yGrid(s, y, [0, 2500, 5000, 7500, 10000], m.l, w - m.r, v => fmtN(v)); el("line", { x1: m.l, x2: w - m.r, y1: y(0), y2: y(0), stroke: "var(--axis)" }, s);
+    for (let c = 15; c <= 40; c += 5) txt(s, x(c), 290 - m.b + 18, c + "c", { anchor: "middle" });
+    const bw = Math.min(14, (x(16) - x(15)) - 2); let cum = 0;
+    L.forEach(([c, q]) => { cum += q; const cheap = c < 25; el("path", { d: roundTopRect(x(c) - bw / 2, y(q), bw, Math.max(1.5, y(0) - y(q)), 3), fill: cheap ? "var(--s2)" : "var(--s1)",
+      "data-tip": `<b>${q.toLocaleString()} cloth at ${c}c</b><br>${cum.toLocaleString()} units at or below this price` }, s);
+      el("rect", { x: x(c) - bw / 2 - 1, y: m.t, width: bw + 2, height: y(0) - m.t, fill: "transparent", "data-tip": `<b>${q.toLocaleString()} cloth at ${c}c</b><br>${cum.toLocaleString()} units at or below this price` }, s); });
+    txt(s, x(25) + bw, y(8780) + 4, "8,780 at 25c: the wall", { fill: "var(--ink)", weight: 600 });
+    txt(s, x(16.5), y(0) - 26, "120 cheap units", { anchor: "middle", fill: "var(--ink)", weight: 600 }); txt(s, x(16.5), y(0) - 12, "16–17c", { anchor: "middle", fill: "var(--ink-2)" });
+    hoverMarks(document.getElementById("c7")); table("t7", ["Price", "Units", "Units at or below"], (() => { let c2 = 0; return L.map(([c, q]) => [c + "c", fmtN(q), fmtN(c2 += q)]); })());
+  },
+  c8() { const c = D.churn, tot = c.relisted + c.bought + c.pulled + c.expired; const parts = [["Relisted at same or lower price", c.relisted, "var(--s1)"], ["Probably bought", c.bought, "var(--s2)"], ["Pulled (a cheaper copy stayed)", c.pulled, "var(--s3)"], ["Expired", c.expired, "var(--s4)"]];
+    let pc = parts.map(p => Math.floor(100 * p[1] / tot)); let rem = 100 - pc.reduce((a, b) => a + b, 0);
+    parts.map((p, i) => [i, 100 * p[1] / tot - pc[i]]).sort((a, b) => b[1] - a[1]).slice(0, rem).forEach(([i]) => pc[i]++);
+    legend("l8", parts.map((p, i) => [p[2], `${p[0]} · ${pc[i]}`, 1]));
+    const box = document.getElementById("c8"); const W = Math.max(280, box.clientWidth); const cell = Math.min(30, Math.floor((Math.min(W, 420)) / 10)); const H = cell * 10 + 4;
+    const [s, w] = svgFor("c8", H); const ox = 0; let k = 0;
+    parts.forEach((p, i) => { for (let j = 0; j < pc[i]; j++, k++) { const col = k % 10, row = Math.floor(k / 10);
+      el("rect", { x: ox + col * cell + 1, y: row * cell + 1, width: cell - 2, height: cell - 2, rx: 3, fill: p[2], "data-tip": `<b>${p[0]}</b><br>${fmtN(p[1])} auctions (${(100 * p[1] / tot).toFixed(1)}%)` }, s); } });
+    if (w > cell * 10 + 200) { let k2 = 0, prevY = -Infinity; const ys = parts.map((p, i) => { const first = k2, last = k2 + pc[i] - 1; k2 += pc[i]; return ((Math.floor(first / 10) + Math.floor(last / 10)) / 2) * cell + cell / 2; });
+      const lab = ys.map(v => (prevY = Math.max(v, prevY + 34))); const shift = Math.max(0, lab[lab.length - 1] + 18 - H); for (let i = lab.length - 1; i >= 0; i--) { lab[i] -= shift; if (i < lab.length - 1) lab[i] = Math.min(lab[i], lab[i + 1] - 34); }
+      parts.forEach((p, i) => { const yy = lab[i]; el("path", { d: `M${cell * 10 + 4},${ys[i]}H${cell * 10 + 12}L${cell * 10 + 22},${yy}`, fill: "none", stroke: "var(--axis)" }, s);
+      txt(s, cell * 10 + 28, yy - 2, `${pc[i]} ${p[0].split(" (")[0].toLowerCase()}`, { fill: "var(--ink)", weight: 600, size: 12.5 }); txt(s, cell * 10 + 28, yy + 13, fmtN(p[1]) + " auctions", { size: 11.5 }); }); }
+    hoverMarks(box); table("t8", ["Outcome", "Auctions", "Share"], [...parts.map(p => [p[0], fmtN(p[1]), (100 * p[1] / tot).toFixed(1) + "%"]), ["New auctions that appeared", fmtN(c.new), ""]]);
+  },
+  c9() { const [s, w] = svgFor("c9", 260), m = { l: 40, r: 10, t: 16, b: 34 }; const map = Object.fromEntries(D.hours); const vals = D.hours.map(h => h[1]); const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+    const x = lin(0, 24, m.l, w - m.r), y = lin(0, 200, 260 - m.b, m.t); yGrid(s, y, [0, 50, 100, 150, 200], m.l, w - m.r, v => v); el("line", { x1: m.l, x2: w - m.r, y1: y(0), y2: y(0), stroke: "var(--axis)" }, s);
+    const bw = Math.min(22, (x(1) - x(0)) - 2); let peak = D.hours.reduce((a, b) => a[1] > b[1] ? a : b)[0];
+    for (let h = 0; h < 24; h++) { const cx = (x(h) + x(h + 1)) / 2; if (h % 3 === 0) txt(s, cx, 260 - m.b + 18, h === 0 ? "12am" : h === 12 ? "12pm" : (h % 12) + (h < 12 ? "am" : "pm"), { anchor: "middle" });
+      if (map[h] == null) { txt(s, cx, y(0) - 6, "–", { anchor: "middle" }); continue; } const v = 100 * map[h] / avg;
+      el("path", { d: roundTopRect(cx - bw / 2, y(v), bw, y(0) - y(v), 4), fill: h === peak ? "var(--s1)" : "var(--o1)",
+        "data-tip": `<b>${h}:00–${h + 1}:00</b><br>Index ${Math.round(v)} (average hour = 100)<br>${fmtN(map[h])} units left early` }, s);
+      if (h === peak) txt(s, cx, y(v) - 6, Math.round(v), { anchor: "middle", fill: "var(--ink)", weight: 600 }); }
+    el("line", { x1: m.l, x2: w - m.r, y1: y(100), y2: y(100), stroke: "var(--axis)", "stroke-width": 1.5 }, s);
+    hoverMarks(document.getElementById("c9")); table("t9", ["Hour", "Index (avg = 100)", "Units left early"], D.hours.map(([h, u]) => [`${h}:00`, Math.round(100 * u / avg), fmtN(u)]));
+  },
+  c10() { const parts = D.timeleft, tot = parts.reduce((a, p) => a + p[1], 0); const nm = { SHORT: "Under 30 min", MEDIUM: "30 min to 2 h", LONG: "2 to 12 h", VERY_LONG: "12 to 48 h" }; const cols = ["var(--o1)", "var(--o2)", "var(--o3)", "var(--o4)"];
+    legend("l10", parts.map((p, i) => [cols[i], nm[p[0]], 1])); const [s, w] = svgFor("c10", 64); let x0 = 0;
+    parts.forEach((p, i) => { const pw = w * p[1] / tot; const share = Math.round(100 * p[1] / tot) + "%";
+      el("rect", { x: x0 + (i ? 1 : 0), y: 4, width: Math.max(1, pw - (i ? 2 : 1)), height: 28, rx: 4, fill: cols[i], "data-tip": `<b>${nm[p[0]]} left</b><br>${fmtN(p[1])} auctions (${share})` }, s);
+      if (pw > 44) txt(s, x0 + 8, 23, share, { fill: i >= 2 ? "#ffffff" : "#0b0b0b", weight: 600, size: 12.5 }); x0 += pw; });
+    txt(s, 0, 52, "fewer minutes left", { size: 11 }); txt(s, w, 52, "more time left", { anchor: "end", size: 11 });
+    hoverMarks(document.getElementById("c10")); table("t10", ["Time left", "Auctions", "Share"], parts.map(p => [nm[p[0]], fmtN(p[1]), (100 * p[1] / tot).toFixed(1) + "%"]));
+  },
+};
+function renderAll() { for (const k in charts) { try { charts[k](); } catch (e) { console.error(k, e); } } }
+renderAll();
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(renderAll, 150); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", renderAll);
+</script>
+</div>
+<footer class="sf"><div class="sf-in">
+<div class="sf-links"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/items/">Prices by category</a><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a><a href="/data/market.csv">Download the data (CSV)</a></div>
+<div>Auction house prices for WoW Forever · US PvP · Horde. Market data only: no player, character or account information.</div>
+<div>HordeLedger is a fan project and is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Item icons © Blizzard Entertainment, from Blizzard's Game Data API.</div>
+</div></footer>
+
+</body>
+</html>
