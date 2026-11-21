@@ -1,0 +1,93 @@
+# HordeLedger
+
+> Auction house prices and market analysis for World of Warcraft: WoW Forever, US PvP, Horde. Updated hourly from Blizzard's Game Data API. Every item page states the current market price, cheapest listing, units listed, 7-day range, estimated sales per day, best hours to sell (US Central) and a posting tip, in plain text.
+
+Data last updated 2026-11-21 9:00 US Central. Money is gold (g), silver (s) and copper (c); 1g = 100s = 10000c. "Market price" is the average unit price of the cheapest 25% of units listed. Prices are for one realm's Horde auction house; other realms differ. Fan project, not affiliated with Blizzard.
+
+## Main pages
+- [Market dashboard](https://hordeledger.com/market/): every listed item, searchable and sortable
+- [Crafting materials](https://hordeledger.com/materials/): the busiest herbs, ores, bars, cloth, leather and enchanting materials with 14-day trends
+- [Prices by category](https://hordeledger.com/items/): herbs, ore, cloth, leather, ammo, consumables, recipes and more
+- [Blog](https://hordeledger.com/blog/): market analysis
+- [About and method](https://hordeledger.com/about/): data sources, how numbers are calculated, privacy
+
+## Data
+- [market.csv](https://hordeledger.com/data/market.csv): current price table for all listed items (copper)
+
+## Categories
+- [Herbs](https://hordeledger.com/prices/herbs/)
+- [Cloth](https://hordeledger.com/prices/cloth/)
+- [Leather](https://hordeledger.com/prices/leather/)
+- [Ore, bars & stone](https://hordeledger.com/prices/metal-and-stone/)
+- [Cooking ingredients](https://hordeledger.com/prices/cooking/)
+- [Enchanting materials](https://hordeledger.com/prices/enchanting/)
+- [Engineering parts](https://hordeledger.com/prices/parts/)
+- [Elemental](https://hordeledger.com/prices/elemental/)
+- [Other trade goods](https://hordeledger.com/prices/trade-goods-other/)
+- [Reagents](https://hordeledger.com/prices/reagents/)
+- [Ammo](https://hordeledger.com/prices/ammo/)
+- [Quivers & ammo pouches](https://hordeledger.com/prices/quivers/)
+- [Consumables](https://hordeledger.com/prices/consumables/)
+- [Recipes](https://hordeledger.com/prices/recipes/)
+- [Bags](https://hordeledger.com/prices/bags/)
+- [Quest items](https://hordeledger.com/prices/quest-items/)
+- [Miscellaneous](https://hordeledger.com/prices/miscellaneous/)
+- [Keys](https://hordeledger.com/prices/keys/)
+- [Armor](https://hordeledger.com/prices/armor/)
+- [Weapons](https://hordeledger.com/prices/weapons/)
+
+## Busiest items
+- [Sharp Arrow](https://hordeledger.com/items/sharp-arrow/): ~1c each, ~93,488 sold/day
+- [Crafted Solid Shot](https://hordeledger.com/items/crafted-solid-shot/): ~4c each, ~82,873 sold/day
+- [Razor Arrow](https://hordeledger.com/items/razor-arrow/): ~2c each, ~70,600 sold/day
+- [Crafted Heavy Shot](https://hordeledger.com/items/crafted-heavy-shot/): ~3c each, ~54,356 sold/day
+- [Jagged Arrow](https://hordeledger.com/items/jagged-arrow/): ~5c each, ~51,101 sold/day
+- [Hi-Impact Mithril Slugs](https://hordeledger.com/items/hi-impact-mithril-slugs/): ~8c each, ~50,900 sold/day
+- [Thorium Shells](https://hordeledger.com/items/thorium-shells/): ~35c each, ~49,069 sold/day
+- [Light Shot](https://hordeledger.com/items/light-shot/): ~1c each, ~46,505 sold/day
+- [Rough Arrow](https://hordeledger.com/items/rough-arrow/): ~1c each, ~46,038 sold/day
+- [Thorium Headed Arrow](https://hordeledger.com/items/thorium-headed-arrow/): ~47c each, ~44,794 sold/day
+- [Mithril Gyro-Shot](https://hordeledger.com/items/mithril-gyro-shot/): ~28c each, ~44,494 sold/day
+- [Solid Shot](https://hordeledger.com/items/solid-shot/): ~2c each, ~39,777 sold/day
+- [Exploding Shot](https://hordeledger.com/items/exploding-shot/): ~16c each, ~35,152 sold/day
+- [Accurate Slugs](https://hordeledger.com/items/accurate-slugs/): ~5c each, ~30,485 sold/day
+- [Feathered Arrow](https://hordeledger.com/items/feathered-arrow/): ~18c each, ~30,170 sold/day
+- [Heavy Shot](https://hordeledger.com/items/heavy-shot/): ~1c each, ~29,258 sold/day
+- [Crafted Light Shot](https://hordeledger.com/items/crafted-light-shot/): ~1c each, ~24,955 sold/day
+- [Runecloth](https://hordeledger.com/items/runecloth/): ~5s 92c each, ~22,352 sold/day
+- [Precision Arrow](https://hordeledger.com/items/precision-arrow/): ~17c each, ~22,213 sold/day
+- [Bronze Bar](https://hordeledger.com/items/bronze-bar/): ~2s 27c each, ~20,930 sold/day
+- [Linen Cloth](https://hordeledger.com/items/linen-cloth/): ~26c each, ~20,125 sold/day
+- [Medium Leather](https://hordeledger.com/items/medium-leather/): ~1s 10c each, ~19,264 sold/day
+- [Silk Cloth](https://hordeledger.com/items/silk-cloth/): ~1s 99c each, ~18,943 sold/day
+- [Heavy Leather](https://hordeledger.com/items/heavy-leather/): ~2s 70c each, ~16,823 sold/day
+- [Thick Leather](https://hordeledger.com/items/thick-leather/): ~5s 94c each, ~16,635 sold/day
+- [Solid Stone](https://hordeledger.com/items/solid-stone/): ~1s 44c each, ~15,913 sold/day
+- [Silverleaf](https://hordeledger.com/items/silverleaf/): ~57c each, ~14,324 sold/day
+- [Wool Cloth](https://hordeledger.com/items/wool-cloth/): ~2s 23c each, ~14,165 sold/day
+- [Mageweave Cloth](https://hordeledger.com/items/mageweave-cloth/): ~4s 22c each, ~13,164 sold/day
+- [Light Leather](https://hordeledger.com/items/light-leather/): ~70c each, ~13,152 sold/day
+- [Rockshard Pellets](https://hordeledger.com/items/rockshard-pellets/): ~27c each, ~12,895 sold/day
+- [Heavy Stone](https://hordeledger.com/items/heavy-stone/): ~3s 26c each, ~12,878 sold/day
+- [Iron Bar](https://hordeledger.com/items/iron-bar/): ~3s 65c each, ~12,550 sold/day
+- [Copper Ore](https://hordeledger.com/items/copper-ore/): ~2s 9c each, ~11,270 sold/day
+- [Stonescale Eel](https://hordeledger.com/items/stonescale-eel/): ~1s 67c each, ~11,175 sold/day
+- [Rough Stone](https://hordeledger.com/items/rough-stone/): ~8c each, ~10,940 sold/day
+- [Dark Iron Residue](https://hordeledger.com/items/dark-iron-residue/): ~1s 0c each, ~10,627 sold/day
+- [Strange Dust](https://hordeledger.com/items/strange-dust/): ~1s 50c each, ~10,446 sold/day
+- [Copper Bar](https://hordeledger.com/items/copper-bar/): ~2s 17c each, ~9,681 sold/day
+- [Light Feather](https://hordeledger.com/items/light-feather/): ~1s 24c each, ~9,595 sold/day
+
+## Blog posts
+- [Firebloom and Sungrass Tripled at Dawn. Such Spikes Rarely Last a Day](https://hordeledger.com/blog/2026-11-21-firebloom-sungrass-tripled-spikes-rarely-last-a-day/): Four materials jumped 2x to 17x at the 06:43 scan. Of 895 similar spikes this week, 71% were back near the old price within 12 hours. Sell fast or wait.
+- [Flasks Cost 16g to Brew, and the Margin Is Shrinking by the Day](https://hordeledger.com/blog/2026-11-20-flasks-cost-16g-to-brew-and-the-margin-is-shrinking/): Black Lotus at 9g 48s puts a flask at about 16g in materials. Brewing still pays, but Supreme Power's margin fell from 8g to 2g 80s in two days.
+- [The Blackmaw Hold Gold Exploit: What the Auction House Shows](https://hordeledger.com/blog/2026-11-19-blackmaw-hold-gold-exploit-what-the-auction-house-shows/): Hourly Horde auction house scans across the Blackmaw Hold gold exploit: no price jump. Goods over 10g fell 36% from Nov 13 to 19; Arcanite rose before it went public.
+- [Blue Dragonscale Fell 98% in Nine Days. Black Still Costs 16x More](https://hordeledger.com/blog/2026-11-19-blue-dragonscale-fell-98-percent-in-nine-days/): Blue Dragonscale slid from 4g 8s to 7s 85c, close to its 5s vendor price. Green and Worn are already there. Black holds at 1g 30s and sells fastest.
+- [First Darkmoon Faire: Bear Pelts Tripled, Then Gave It All Back](https://hordeledger.com/blog/2026-11-17-first-darkmoon-faire-bear-pelts-tripled-then-gave-it-back/): Torn Bear Pelt went from 1s 22c to 4s 45c on day two of the first Darkmoon Faire, then back to 1s 20c. Crafted turn-ins never moved.
+- [Journeyman Crates Up Sevenfold, Artisan Crates Down 99%](https://hordeledger.com/blog/2026-11-16-journeyman-crates-up-sevenfold-artisan-crates-down-99/): Waylaid Crates and Sealed Writs split by tier this week: low tiers doubled or more on thinner stock, while Artisan supply grew twelvefold and prices collapsed.
+- [Prices Fell 18% This Week, but Raw Materials Have Stopped](https://hordeledger.com/blog/2026-11-15-prices-down-18-but-raw-materials-have-stopped-falling/): The Horde price index is down 18% on the week, yet trade goods have been flat for three days. Potions, recipes and gear are still falling.
+- [Level-50 Blues Are Halving: Wait to Buy, List Fast](https://hordeledger.com/blog/2026-11-14-level-50-blues-are-halving-wait-to-buy/): Rare gear for level 48+ on the Horde auction house has lost 38% in two days as listings quadrupled. Why the cheap ones aren't flips yet.
+- [Smelting Pays More the Higher the Skill Gate](https://hordeledger.com/blog/2026-11-13-smelting-pays-more-the-higher-the-skill-gate/): Thorium Bar clears about 7s over Thorium Ore after the auction cut; copper and tin clear nothing. Smelting margins on the Horde AH, by skill level.
+- [Five Cheap Staples Repriced Overnight](https://hordeledger.com/blog/2026-11-12-five-cheap-staples-repriced-overnight/): Small Venom Sac, Fish Bowl, Elemental Water and two more jumped 3x to 1,900x in one night on the Horde AH. Which moves are holding and which aren't.
+- [Silk, Heavy Leather and Iron Bar Hit the Vendor Floor](https://hordeledger.com/blog/2026-11-11-silk-heavy-leather-iron-bar-hit-the-vendor-floor/): Iron Bar, Silk Cloth and Heavy Leather are down about 90% since launch and now trade within 20-30% of vendor price: little downside left for crafters.
+- [The first 72 hours of the Horde auction house](https://hordeledger.com/blog/launch-week/): We watched one WoW Forever auction house from launch night on. Prices halved, ammo ran a third of all volume, and most listings that vanish come straight back cheaper. Ten things that stood out.
