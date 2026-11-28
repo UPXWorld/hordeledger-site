@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HordeLedger addon: auction house prices on your tooltips | WoW Forever</title>
+<meta name="description" content="Free WoW Forever addon: HordeLedger&#x27;s Horde auction house prices, sales per day and posting tips on item tooltips. Download, install steps and how to refresh prices.">
+<link rel="canonical" href="https://hordeledger.com/addon/">
+<meta property="og:site_name" content="HordeLedger">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HordeLedger addon: auction house prices on your tooltips | WoW Forever">
+<meta property="og:description" content="Free WoW Forever addon: HordeLedger&#x27;s Horde auction house prices, sales per day and posting tips on item tooltips. Download, install steps and how to refresh prices.">
+<meta property="og:url" content="https://hordeledger.com/addon/">
+<meta property="og:image" content="https://hordeledger.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#b3261e">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="HordeLedger blog" href="/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+
+</head>
+<body>
+<header class="sh"><div class="sh-in">
+<a class="sh-logo" href="/"><span class="coins" aria-hidden="true"><i style="background:var(--gold)"></i><i style="background:var(--silver)"></i><i style="background:var(--copper)"></i></span>HordeLedger</a>
+<nav class="sh-nav" aria-label="Site"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/addon/" aria-current="page">Addon</a><a href="/items/">Prices by category</a><a href="/blog/">Blog</a><a href="/about/">About</a></nav>
+</div></header>
+<main class="main"><div class="prose">
+<h1>HordeLedger addon</h1>
+<p class="lede">The prices on this site, on your item tooltips in game. Hover an item to see what it sells for on the Horde auction house, how many are listed, how fast it sells and whether now is a good time to post.</p>
+<p><a class="btn" href="/addon/HordeLedger.zip" download>Download HordeLedger 1.0</a> <span class="small muted">&nbsp;321 KB zip · 7,068 items · prices from Nov 28, 2026 11:00 US Central</span></p>
+<div class="tip-box"><b>What a tooltip looks like</b>HordeLedger lowest 5s 20c, market 5s 21c, 6,682 listed | sells ~29,280/day | 11% of 7d range (4s 86c-8s 0c)<br><span class="small muted">That is <a href="/items/runecloth/">Runecloth</a> right now, the same numbers as its page here.</span></div>
+<h2 id="what">What it does</h2>
+<ul>
+<li><b>Tooltip prices.</b> Cheapest listing, market price, units listed, estimated sales per day, and where the price sits in its 7-day range.</li>
+<li><b>Posting tips.</b> When undercutting the cheapest listing would be a mistake (a few cheap listings in front of a wall, a price spike, a slow seller, or a listing under vendor price), the tooltip says so.</li>
+<li><b>Vendor check.</b> If a vendor sells the item, the tooltip shows the vendor price next to the auction house price.</li>
+<li><b>Market window.</b> The <a href="/economy/">price index</a>, the day's biggest movers, and how this house compares with the <a href="/realms/">other Forever auction houses</a>.</li>
+<li><b>Site links.</b> Right-click an item in the window for its page here, with charts and history.</li>
+</ul>
+<p>It only reads and shows prices. It never posts, buys, cancels or automates anything, and it sends nothing anywhere.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Download the zip and unzip it. You get one folder called <b>HordeLedger</b>.</li>
+<li>Close the game. Open your World of Warcraft folder, then the WoW Forever game folder inside it, then <b>Interface</b>, then <b>AddOns</b>.</li>
+<li>Move the HordeLedger folder in there and start the game. On the character screen, check that HordeLedger is ticked under AddOns.</li>
+</ol>
+<h2 id="update">Keeping prices fresh</h2>
+<p>Addons can't use the internet, so the prices are a snapshot from when you downloaded. This site takes a new snapshot every hour. To refresh:</p>
+<ul>
+<li>double-click <b>Update Prices.cmd</b> inside the HordeLedger folder (Windows; it downloads one file, <a href="/addon/Data.lua">Data.lua</a>, from this site), or</li>
+<li>download the zip again and replace the folder.</li>
+</ul>
+<p>Then type <code>/reload</code> in game. The addon tells you how old its prices are when you log in, and warns you after a day.</p>
+<h2 id="commands">Commands</h2>
+<div class="tw"><table class="t"><thead><tr><th>Type</th><th>What it does</th></tr></thead><tbody>
+<tr><td><code>/hl</code></td><td>Open the market window: price index, biggest movers, this auction house against the other Forever houses.</td></tr><tr><td><code>/hl &lt;item&gt;</code></td><td>Price check in chat. A name, part of a name, or shift-click an item.</td></tr><tr><td><code>/hl web &lt;item&gt;</code></td><td>The item&#x27;s page on this site, in a box you can copy. Addons can&#x27;t open a browser.</td></tr><tr><td><code>/hl tooltip</code></td><td>Turn the tooltip lines on or off.</td></tr>
+</tbody></table></div>
+<h2 id="scope">Which prices</h2>
+<p>WoW Forever · US PvP · Horde, the same auction house as the rest of this site. Other realms and the Alliance auction house have different prices, so use it as a guide there, not a quote. <a href="/about/#method">How the numbers work</a>.</p>
+<p class="small muted">HordeLedger is a fan project and is not affiliated with or endorsed by Blizzard Entertainment.</p>
+</div></main>
+<footer class="sf"><div class="sf-in">
+<div class="sf-links"><a href="/">Home</a><a href="/market/">Market</a><a href="/materials/">Materials</a><a href="/economy/">Economy</a><a href="/realms/">Realms</a><a href="/addon/" aria-current="page">Addon</a><a href="/items/">Prices by category</a><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/data/market.csv">Download the data (CSV)</a></div>
+<div>Auction house prices for WoW Forever · US PvP · Horde. Market data only: no player, character or account information.</div>
+<div>HordeLedger is a fan project and is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Item icons © Blizzard Entertainment, from Blizzard's Game Data API.</div>
+</div></footer>
+
+</body>
+</html>
